@@ -1,0 +1,7 @@
+
+Run Calculator
+
+
+The runcalculator/icon.png is "oxygen/base/256x256/apps/accessories-calculator.png" from "oxygen-icons" (LGPL)
+
+https://techbase.kde.org/Projects/Oxygen/Licensing
