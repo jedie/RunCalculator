@@ -10,6 +10,8 @@ from functools import partial
 
 from kivy.config import Config
 
+from kivy.properties import OptionProperty
+
 Config.set("kivy", "log_level", "debug")
 
 
@@ -22,7 +24,15 @@ from kivy.core.window import Window
 
 
 class IntegerInput(TextInput):
+    input_type = OptionProperty( # kivy.uix.behaviors.FocusBehavior
+        'number',
+        # 'datetime',
+        # 'text', 'number', 'url', 'mail', 'datetime', 'tel', 'address'
+    )
+
     def __init__(self, min_value=None, max_value=None, **kwargs):
+        self.input_filter = "int" # kivy.uix.textinput.TextInput#insert_text
+
         self.str2number_func = int
         self.min_value=min_value
         self.max_value=max_value
