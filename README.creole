@@ -15,6 +15,19 @@ build docker:
 docker build -t runcalculator .
 }}}
 
+run buildozer via bash shell:
+{{{
+$ docker run -it runcalculator /bin/bash
+user@<hash>:~/runcalculator$ buildozer android debug
+user@<hash>:~/runcalculator$ buildozer android release
+}}}
+
+cleanup:
+{{{
+docker image prune
+docker container prune
+}}}
+
 == icon .png ==
 
 The [[https://github.com/jedie/RunCalculator/blob/master/runcalculator/icon.png|runcalculator/icon.png]] is "oxygen/base/256x256/apps/accessories-calculator.png" from "oxygen-icons" (LGPL)

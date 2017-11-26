@@ -42,7 +42,3 @@ WORKDIR /home/user/runcalculator
 USER user
 
 RUN ls -la
-
-RUN buildozer android debug
-RUN buildozer android release
-
