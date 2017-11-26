@@ -18,7 +18,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
 from kivy.logger import Logger
-
+from kivy.core.window import Window
 
 
 class IntegerInput(TextInput):
@@ -224,4 +224,6 @@ def calc_pace(distance, seconds):
 
 if __name__ == '__main__':
     assert calc_pace(distance=10, seconds=1*60*60) == 6.0
+
+    Window.clearcolor = (0.5, 0.5, 0.5, 1)
     RunCalcApp().run()
