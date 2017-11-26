@@ -1,0 +1,6 @@
+-r base.txt
+isort
+pytest
+pytest-cov
+coverage
+#https://github.com/KeyWeeUsr/KivyUnitTest/archive/0.1.3.tar.gz
