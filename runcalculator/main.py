@@ -97,7 +97,8 @@ class TimeTextInput(BoxLayout):
 
         self.text_mm = IntegerInput(
             multiline=False,
-            min_value=0, max_value=59,
+            min_value=0,
+            max_value=None,
         )
         self.text_mm.bind(text=partial(self.on_value, key="minute"))
         self.add_widget(self.text_mm)
@@ -106,7 +107,8 @@ class TimeTextInput(BoxLayout):
 
         self.text_ss = IntegerInput(
             multiline=False,
-            min_value=0, max_value=59,
+            min_value=0,
+            max_value=None,
         )
         self.text_ss.bind(text=partial(self.on_value, key="second"))
         self.add_widget(self.text_ss)
