@@ -13,7 +13,6 @@ from kivy.properties import OptionProperty
 
 Config.set("kivy", "log_level", "debug")
 
-
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -167,7 +166,7 @@ class RunCalcApp(App):
         self.distance = None
         self.time_seconds = None
         self.pace = None
-        
+
     def build(self):
         root = BoxLayout(orientation='vertical')
 
