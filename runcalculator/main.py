@@ -65,6 +65,17 @@ class IntegerInput(TextInput):
         self.value = int(self.text)
 
 
+
+class FloatInput(TextInput):
+    input_type = OptionProperty( # kivy.uix.behaviors.FocusBehavior
+        'number',
+        # 'text', 'number', 'url', 'mail', 'datetime', 'tel', 'address'
+    )
+    def __init__(self, **kwargs):
+        self.input_filter = "float" # kivy.uix.textinput.TextInput#insert_text
+        super(FloatInput, self).__init__(**kwargs)
+
+
 class TimeTextInput(BoxLayout):
     def __init__(self, hours=True, **kwargs):
         self.hours = hours
@@ -153,7 +164,7 @@ class RunCalcApp(App):
         #---------------------------------------------------------------------
 
         root.add_widget(Label(text='Distance [km]'))
-        text_distance = TextInput(multiline=False)
+        text_distance = FloatInput(multiline=False)
         text_distance.bind(text=self.on_distance)
         root.add_widget(text_distance)
 
