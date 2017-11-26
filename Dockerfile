@@ -14,7 +14,7 @@ RUN apt-get update -qq \
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get -y install lib32stdc++6 lib32z1 lib32ncurses5 \
-    && apt-get -y install build-essential \
+    && apt-get -y install python-pip build-essential \
     && apt-get -y install git openjdk-8-jdk --no-install-recommends zlib1g-dev \
     && pip install -U pip \
     && pip install cython buildozer python-for-android \
