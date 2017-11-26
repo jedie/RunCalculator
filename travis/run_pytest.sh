@@ -10,8 +10,7 @@ source venv/bin/activate
 
 # installs requirements
 pip install --install-option="--no-cython-compile" $(grep Cython requirements.txt)
-pip install -r tests/requirements.txt
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 
 # runs tests
 pytest
