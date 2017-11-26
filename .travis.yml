@@ -3,6 +3,12 @@ sudo: required
 
 language: generic
 
+# work-a-round for https://github.com/travis-ci/travis-ci/issues/8317
+addons:
+  apt:
+    packages:
+    - libsdl2-dev
+
 before_install:
     # Required by Buildozer Android
     # https://buildozer.readthedocs.io/en/latest/installation.html#android-on-ubuntu-14-10-64bit
@@ -12,7 +18,7 @@ before_install:
     - sudo apt-get install build-essential ccache git lib32stdc++6 lib32z1 lib32z1-dev python2.7 python2.7-dev openjdk-7-jdk unzip zlib1g-dev zlib1g:i386
     # Required by Kivy
     # https://kivy.org/docs/installation/installation-linux.html#dependencies-with-sdl2
-    - sudo apt-get install python-pip libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev
+    - sudo apt-get install python-pip libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev
 
 env:
     matrix:
