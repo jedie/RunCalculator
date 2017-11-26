@@ -6,7 +6,6 @@
 from __future__ import print_function, absolute_import, unicode_literals
 
 import math
-from functools import partial
 
 from kivy.config import Config
 
@@ -42,6 +41,8 @@ class IntegerInput(TextInput):
         self.value = None
         super(IntegerInput, self).__init__(**kwargs)
 
+        self.bind(text=self.on_text)
+
     def is_valid(self, substring):
         try:
             value = self.str2number_func(substring)
@@ -58,6 +59,10 @@ class IntegerInput(TextInput):
             return False
 
         return True
+
+    def on_text(self, instance, value):
+        if value:
+            self.value = self.str2number_func(value)
 
     def insert_text(self, substring, from_undo=False):
         if not self.is_valid(self.text + substring):
@@ -93,7 +98,7 @@ class TimeTextInput(BoxLayout):
                 multiline=False,
                 min_value=0, max_value=None,
             )
-            self.text_hh.bind(text=partial(self.on_value, key="hour"))
+            self.text_hh.bind(text=self.on_value)
             self.add_widget(self.text_hh)
 
             self.add_widget(Label(text=":"))
@@ -103,7 +108,7 @@ class TimeTextInput(BoxLayout):
             min_value=0,
             max_value=None,
         )
-        self.text_mm.bind(text=partial(self.on_value, key="minute"))
+        self.text_mm.bind(text=self.on_value)
         self.add_widget(self.text_mm)
 
         self.add_widget(Label(text=":"))
@@ -113,7 +118,7 @@ class TimeTextInput(BoxLayout):
             min_value=0,
             max_value=None,
         )
-        self.text_ss.bind(text=partial(self.on_value, key="second"))
+        self.text_ss.bind(text=self.on_value)
         self.add_widget(self.text_ss)
 
     def update_seconds(self):
@@ -146,7 +151,7 @@ class TimeTextInput(BoxLayout):
         Logger.debug("set_seconds() seconds: %i" % seconds)
         self.text_ss.text = "%i" % seconds
 
-    def on_value(self, instance, value, key):
+    def on_value(self, instance, value):
         if value:
             instance.text = value
             self.update_seconds()
