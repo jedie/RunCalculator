@@ -23,6 +23,9 @@ from kivy.logger import Logger
 from kivy.core.window import Window
 
 
+__version__ = "0.1"
+
+
 class IntegerInput(TextInput):
     input_type = OptionProperty( # kivy.uix.behaviors.FocusBehavior
         'number',
@@ -189,6 +192,19 @@ class RunCalcApp(App):
         root.add_widget(Label(text='info:'))
         self.textbox_info = TextInput(multiline=False)
         root.add_widget(self.textbox_info)
+
+        #---------------------------------------------------------------------
+
+        root.add_widget(
+            Label(
+                text=(
+                     'Run Calculator v%s created by Jens Diemer\n'
+                     'release under GPL\n'
+                     'Project page: https://github.com/jedie/RunCalculator/'
+                ) % __version__,
+                markup=True
+            )
+        )
 
         return root
 
