@@ -22,7 +22,7 @@ before_install:
 
 env:
     matrix:
-        - SCRIPT_COMMAND="./travis/script_linux.sh"
+        - SCRIPT_COMMAND="./travis/run_pytest.sh"
         - SCRIPT_COMMAND="./travis/script_android.sh"
 
 script:
@@ -33,7 +33,7 @@ script:
 deploy:
   provider: releases
   api_key: ${GH_TOKEN_FROM_ENV}
-  file: 
+  file:
     - "bin/runcalculator-debug.apk"
     - "bin/runcalculator-release-unsigned.apk"
   skip_cleanup: true
