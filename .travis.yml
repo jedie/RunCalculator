@@ -23,6 +23,7 @@ before_install:
 env:
     matrix:
         - SCRIPT_COMMAND="./travis/run_pytest.sh"
+        - SCRIPT_COMMAND="./travis/built_docker.sh"
         - SCRIPT_COMMAND="./travis/script_android.sh"
 
 script:
