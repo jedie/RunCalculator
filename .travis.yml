@@ -24,7 +24,7 @@ env:
     matrix:
         - SCRIPT_COMMAND="./travis/run_pytest.sh"
         - SCRIPT_COMMAND="./travis/built_docker.sh"
-        - SCRIPT_COMMAND="./travis/script_android.sh"
+        - SCRIPT_COMMAND="./travis/buildozer_android.sh"
 
 script:
     # runs in parallel

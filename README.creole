@@ -8,6 +8,14 @@ Simple Python/Kivy app to calculate the "pace" (min/km)
 | {{https://requires.io/github/jedie/RunCalculator/requirements.svg|Requirements Status on requires.io}} | [[https://requires.io/github/jedie/RunCalculator/requirements/|requires.io/github/jedie/RunCalculator/requirements/]] |
 
 
+== build via docker ==
+
+{{{
+docker build -t runcalculator .
+docker run -u ${UID} --rm --privileged=true -it -v ${PWD}:/home/${USER}/runcalculator bash -i
+docker run -u ${UID} --rm --privileged=true -it -v ${PWD}:/home/${USER}/runcalculator sh -c 'buildozer ${ARGS}'
+}}}
+
 == icon .png ==
 
 The [[https://github.com/jedie/RunCalculator/blob/master/runcalculator/icon.png|runcalculator/icon.png]] is "oxygen/base/256x256/apps/accessories-calculator.png" from "oxygen-icons" (LGPL)
