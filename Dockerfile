@@ -22,7 +22,7 @@ RUN dpkg --add-architecture i386 \
 
 ADD requirements/*.txt /tmp/
 
-RUN pip install --upgrade cython \
+RUN pip install "cython<0.27" \
     && pip install -r /tmp/built.txt \
     && adduser --disabled-password --gecos "" ${USER}
 
