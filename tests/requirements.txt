@@ -1,0 +1,3 @@
+#pytest
+#https://github.com/KeyWeeUsr/KivyUnitTest/archive/0.1.3.tar.gz
+

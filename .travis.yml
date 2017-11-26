@@ -1,46 +1,25 @@
-sudo: required
 dist: trusty
-language: python
-python:
-    - "2.7"
+sudo: required
+
+language: generic
+
 before_install:
-    - sudo apt-get install -y python-opengl python-gst0.10 python-enchant python-dev
-    - sudo apt-get install -y gstreamer0.10-plugins-good libgl1-mesa-dev-lts-quantal libgles2-mesa-dev-lts-quantal
-    - sudo add-apt-repository -y ppa:kivy-team/kivy-daily
-    - sudo apt-get update
-    - sudo apt-get install -y python-kivy
-    - pip install pip
-    - pip install setuptools
-    - pip install wsgiref
-    - pip install --upgrade Cython==0.23
-    - sudo apt-get update
-    - sudo apt-get install -y build-essential lib32z1 lib32bz2-1.0 python2.7-dev openjdk-7-jdk unzip zlib1g-dev
-    - sudo apt-get install -y lib32ncurses5 
-    - sudo dpkg --add-architecture i386
-    - sudo apt-get install -y lib32stdc++6 
-    - git clone https://github.com/kivy/buildozer.git
-    - cd buildozer
-    - sudo python setup.py install
-    - cd ..
-    - sudo rm -rf .buildozer
+    # Required by Buildozer Android
+    # https://buildozer.readthedocs.io/en/latest/installation.html#android-on-ubuntu-12-04-64bit
+    - sudo apt-get update -q
+    - sudo apt-get install build-essential ccache git lib32z1 lib32bz2-1.0 libncurses5:i386 libstdc++6:i386 python2.7 python2.7-dev openjdk-7-jdk unzip zlib1g-dev zlib1g:i386
+    # Required by Kivy
+    # https://kivy.org/docs/installation/installation-linux.html#dependencies-with-sdl2
+    - sudo apt-get install python-pip build-essential git python-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
+
+env:
+    matrix:
+        - SCRIPT_COMMAND="./travis/script_linux.sh"
+        - SCRIPT_COMMAND="./travis/script_android.sh"
+
 script:
-    - cd runcalculator
-    - buildozer android debug
-    - buildozer android release
-
-# using kivy-daily: python-kivy-1.9.2-0 version and CI testing ;)
-# dist: trusty means Trusty Beta (14.04) which have new Kivy
-
-# buildozer deps for Ubuntu 14.10
-# for more see: http://buildozer.readthedocs.io/en/latest/installation.html
-
-# trick needed?
-# http://askubuntu.com/questions/423083/cant-run-dpkg-add-architecture-i386-on-12-04-64-bit-to-run-eclipse-adt
-
-# maybe this: libz1:i386 not needed??? ;/ desperate to download Trusty Beta to local
-
-# auto build with buildozer
-# ---
+    # runs in parallel
+    - (eval "$SCRIPT_COMMAND")
 
 deploy:
   provider: releases
