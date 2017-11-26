@@ -24,6 +24,7 @@ before_install:
     - cd ..
     - sudo rm -rf .buildozer
 script:
+    - cd runcalculator
     - buildozer android debug
     - buildozer android release
 
