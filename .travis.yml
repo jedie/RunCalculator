@@ -8,28 +8,29 @@ language: generic
 #    - "sh -e /etc/init.d/xvfb start"
 #    - sleep 3 # give xvfb some time to start
 
-before_install:
-    # Required by Buildozer Android
-    # https://buildozer.readthedocs.io/en/latest/installation.html#android-on-ubuntu-12-04-64bit
-    - sudo apt-get update -q
-    - sudo apt-get install build-essential ccache git lib32z1 lib32bz2-1.0 libncurses5:i386 libstdc++6:i386 python2.7 python2.7-dev openjdk-7-jdk unzip zlib1g-dev zlib1g:i386
-    # Required by Kivy
-    # https://kivy.org/docs/installation/installation-linux.html#dependencies-with-sdl2
-    - sudo apt-get install python-pip build-essential git python-dev
-    - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
-    # Optional dependency for the cut and multitouch support
-    - sudo apt-get install xclip libmtdev1
-    # Required for the project
-    - sudo apt-get install libzbar-dev
+#before_install:
+#    # Required by Buildozer Android
+#    # https://buildozer.readthedocs.io/en/latest/installation.html#android-on-ubuntu-12-04-64bit
+#    - sudo apt-get update -q
+#    - sudo apt-get install build-essential ccache git lib32z1 lib32bz2-1.0 libncurses5:i386 libstdc++6:i386 python2.7 python2.7-dev openjdk-7-jdk unzip zlib1g-dev zlib1g:i386
+#    # Required by Kivy
+#    # https://kivy.org/docs/installation/installation-linux.html#dependencies-with-sdl2
+#    - sudo apt-get install python-pip build-essential git python-dev
+#    - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
+#    # Optional dependency for the cut and multitouch support
+#    - sudo apt-get install xclip libmtdev1
+#    # Required for the project
+#    - sudo apt-get install libzbar-dev
 
 env:
     matrix:
-        - SCRIPT_COMMAND="./travis/run_pytest.sh"
+#        - SCRIPT_COMMAND="./travis/run_pytest.sh"
         - SCRIPT_COMMAND="./travis/built_docker.sh"
-        - SCRIPT_COMMAND="./travis/buildozer_android.sh"
+#        - SCRIPT_COMMAND="./travis/buildozer_android.sh"
 
 script:
     # runs in parallel
+    - ls -la ./travis
     - (eval "$SCRIPT_COMMAND")
 
 # https://docs.travis-ci.com/user/deployment/releases/
