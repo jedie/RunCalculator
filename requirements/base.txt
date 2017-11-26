@@ -1,7 +1,3 @@
-Cython
-# on Ubuntu 16.04 Xenial, the error:
-# x11 - ImportError: No module named window_x11
-# is fixed by installing kivy master
-# https://github.com/kivy/kivy/archive/27e3b90eae2a0155b22a435f1b6f65c913519db6.zip
+cython<0.27
 Kivy
 
