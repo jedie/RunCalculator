@@ -31,6 +31,8 @@ env:
 script:
     # runs in parallel
     - ls -la ./travis
+    - chmod +x -Rf ./travis
+    - ls -la ./travis
     - (eval "$SCRIPT_COMMAND")
 
 # https://docs.travis-ci.com/user/deployment/releases/
