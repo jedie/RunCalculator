@@ -1,7 +1,6 @@
 # based on https://github.com/D3f0/kivyworkshop/blob/master/docker/Dockerfile
 
 FROM ubuntu:16.04
-ENV USER user
 
 # Update ubuntu:
 RUN apt-get update -qq \
@@ -23,13 +22,27 @@ RUN dpkg --add-architecture i386 \
 ADD requirements/*.txt /tmp/
 
 RUN pip install "cython<0.27" \
-    && pip install -r /tmp/built.txt \
-    && adduser --disabled-password --gecos "" ${USER}
+    && pip install -r /tmp/built.txt
 
-USER ${USER}
+# needs by buildozer
+RUN pip install "appdirs" "colorama>=0.3.3" "sh>=1.10,<1.12.5" "jinja2" "six"
 
-RUN mkdir -p /home/${USER}/runcalculator \
-    && RUN chown -R ${USER} /home/${USER}/runcalculator
+# Just use 'user' as username: buildozer doesn't like to run as root
 
-WORKDIR /home/${USER}/runcalculator
+RUN adduser --uid 1000 --disabled-password --gecos "" user \
+    && chown -R user /home/user
+
+ADD runcalculator /home/user/runcalculator
+RUN chown -R user /home/user/runcalculator \
+    && mkdir -p /tmp \
+    && chmod 777 -Rf /tmp
+
+WORKDIR /home/user/runcalculator
+
+USER user
+
+RUN ls -la
+
+RUN buildozer android debug
+RUN buildozer android release
 
