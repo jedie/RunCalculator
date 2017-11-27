@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# buildozer
+.buildozer/
+**/bin/
+
 # C extensions
 *.so
 
@@ -98,3 +102,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# PyCharm
+.idea
