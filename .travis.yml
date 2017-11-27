@@ -11,10 +11,18 @@ before_install:
     - docker pull jedie/buildozer
 
 script:
-    - ls -la
+    # some version information:
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer python --version
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer pip freeze
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer cython --version
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --version
+
     - cd runcalculator
     - ls -la
-    - docker run -t jedie/buildozer -v ${PWD}:/buildozer/ buildozer --verbose android release
+
+    # build .apk via buildozer
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --verbose android release
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --verbose android debug
 
 # https://docs.travis-ci.com/user/deployment/releases/
 deploy:
