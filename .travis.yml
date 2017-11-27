@@ -21,8 +21,8 @@ script:
     - ls -la
 
     # build .apk via buildozer
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --verbose android release
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --verbose android debug
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer android release
+    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer android debug
 
 # https://docs.travis-ci.com/user/deployment/releases/
 deploy:
