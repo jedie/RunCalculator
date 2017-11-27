@@ -12,6 +12,10 @@ Simple Python/Kivy app to calculate the "pace" (min/km)
 
 build docker:
 {{{
+docker pull jedie/buildozer
+cd runcalculator
+../runcalculator$ docker run -t jedie/buildozer -v ${PWD}:/buildozer/ buildozer --verbose android release
+
 docker build -t runcalculator .
 }}}
 
@@ -24,8 +28,8 @@ user@<hash>:~/runcalculator$ buildozer android release
 
 cleanup:
 {{{
-docker image prune
-docker container prune
+docker image prune -f
+docker container prune -f
 }}}
 
 == icon .png ==
