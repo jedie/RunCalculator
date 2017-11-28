@@ -37,9 +37,9 @@ docker pull jedie/buildozer
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer cython --version
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer buildozer --version
 
-    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer id
-    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer pwd
-    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer ls -la
+#    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer id
+#    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer pwd
+#    docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer ls -la
 
     docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer buildozer ${1} android debug
     docker run --tty --volume ${PWD}:/buildozer/ ${CHANGE_USER} jedie/buildozer buildozer ${1} android release
