@@ -20,6 +20,8 @@ docker pull jedie/buildozer
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer cython --version
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer buildozer --version
 
+    docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer ls -Rla
+
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer buildozer ${1} android debug
     docker run --tty --volume ${PWD}:/buildozer/ jedie/buildozer buildozer ${1} android release
 )
