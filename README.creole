@@ -10,6 +10,8 @@ Simple Python/Kivy app to calculate the "pace" (min/km)
 
 == built apk ==
 
+We used buildozer in a docker container to built the {{{.apk}}} file.
+
 Just call:
 {{{
 ./built_apk.sh
@@ -20,28 +22,16 @@ or in verbose mode:
 ./built_apk.sh --verbose
 }}}
 
-== docker ==
 
-build docker:
+== kivy buildozer docker ==
+
+This project used the docker image: https://hub.docker.com/r/jedie/buildozer/
+
+See project: https://github.com/jedie/kivy-buildozer-docker
+
+go into bash shell e.g.:
 {{{
-docker pull jedie/buildozer
-cd runcalculator
-../runcalculator$ docker run -t jedie/buildozer -v ${PWD}:/buildozer/ buildozer --verbose android release
-
-docker build -t runcalculator .
-}}}
-
-run buildozer via bash shell:
-{{{
-$ docker run -it runcalculator /bin/bash
-user@<hash>:~/runcalculator$ buildozer android debug
-user@<hash>:~/runcalculator$ buildozer android release
-}}}
-
-cleanup:
-{{{
-docker image prune -f
-docker container prune -f
+.../RunCalculator$ docker run -it -v ${PWD}/runcalculator:/buildozer/ jedie/buildozer bash
 }}}
 
 == icon .png ==
