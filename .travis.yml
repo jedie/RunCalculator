@@ -6,31 +6,16 @@ language: generic
 services:
   - docker
 
-before_install:
-    # https://github.com/jedie/kivy-buildozer-docker
-    - docker pull jedie/buildozer
-
 script:
-    # some version information:
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer python --version
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer pip freeze
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer cython --version
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer --version
-
-    - cd runcalculator
-    - ls -la
-
-    # build .apk via buildozer
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer android release
-    - docker run -v ${PWD}:/buildozer/ -t jedie/buildozer buildozer android debug
+    - ./built_apk.sh
 
 # https://docs.travis-ci.com/user/deployment/releases/
 deploy:
   provider: releases
   api_key: ${GH_TOKEN_FROM_ENV}
   file:
-    - "bin/runcalculator-debug.apk"
-    - "bin/runcalculator-release-unsigned.apk"
+    - "runcalculator/bin//RunCalculator-0.1-debug.apk"
+    - "runcalculator/bin/RunCalculator-0.1-release-unsigned.apk"
   skip_cleanup: true
   on:
     tags: true
