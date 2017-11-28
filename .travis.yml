@@ -12,14 +12,11 @@ script:
 # https://docs.travis-ci.com/user/deployment/releases/
 deploy:
   provider: releases
-  api_key: ${GH_TOKEN_FROM_ENV}
+  api_key:
+    secure: ${GH_TOKEN}
   file:
-    - "runcalculator/bin//RunCalculator-0.1-debug.apk"
+    - "runcalculator/bin/RunCalculator-0.1-debug.apk"
     - "runcalculator/bin/RunCalculator-0.1-release-unsigned.apk"
   skip_cleanup: true
   on:
     tags: true
-
-# how to get GH_TOKEN?
-# https://blog.wyrihaximus.net/2015/09/github-auth-token-on-travis/
-# auto release on tags
