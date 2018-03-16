@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 import io
 import re
+
+import os
 from setuptools import setup, find_packages
 import sys
+
+
+PACKAGE_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 with io.open('./run_calculator/__init__.py', encoding='utf8') as version_file:
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
@@ -12,8 +18,20 @@ with io.open('./run_calculator/__init__.py', encoding='utf8') as version_file:
         raise RuntimeError("Unable to find version string.")
 
 
-with io.open('README.rst', encoding='utf8') as readme:
-    long_description = readme.read()
+#_____________________________________________________________________________
+# convert creole to ReSt on-the-fly, see also:
+# https://github.com/jedie/python-creole/wiki/Use-In-Setup
+long_description = None
+for arg in ("test", "check", "register", "sdist", "--long-description"):
+    if arg in sys.argv:
+        try:
+            from creole.setup_utils import get_long_description
+        except ImportError as err:
+            raise ImportError("%s - Please install python-creole - e.g.: pip install python-creole" % err)
+        else:
+            long_description = get_long_description(PACKAGE_ROOT)
+        break
+#----------------------------------------------------------------------------
 
 
 setup(
