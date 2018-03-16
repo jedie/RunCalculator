@@ -10,3 +10,23 @@ There exist also a Python/Kivy implementation in [[https://github.com/jedie/RunC
 | {{https://coveralls.io/repos/jedie/RunCalculator/badge.svg|Coverage Status on coveralls.io}} | [[https://coveralls.io/r/jedie/RunCalculator|coveralls.io/r/jedie/RunCalculator]] |
 | {{https://travis-ci.org/jedie/RunCalculator.svg|Build Status on travis-ci.org}} | [[https://travis-ci.org/jedie/RunCalculator/|travis-ci.org/jedie/RunCalculator]] |
 | {{https://requires.io/github/jedie/RunCalculator/requirements.svg|Requirements Status on requires.io}} | [[https://requires.io/github/jedie/RunCalculator/requirements/|requires.io/github/jedie/RunCalculator/requirements/]] |
+
+
+== setup developer environment
+
+{{{
+# Download bootstarp script:
+~$ wget https://github.com/jedie/RunCalculator/raw/pybee/boot_dev_venv.sh
+
+# create venv:
+~$ bash boot_dev_venv.sh
+
+# go into venv:
+~$ cd RunCalculator-Env/
+
+# activate venv:
+~/RunCalculator-Env$ source bin/activate
+
+# run the calculator:
+(RunCalculator-Env) ~/RunCalculator-Env$ python -m run_calculator
+}}}
