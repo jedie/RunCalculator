@@ -10,12 +10,14 @@ import sys
 PACKAGE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
-with io.open('./run_calculator/__init__.py', encoding='utf8') as version_file:
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
-    if version_match:
-        version = version_match.group(1)
-    else:
-        raise RuntimeError("Unable to find version string.")
+def read(*args):
+    return open(os.path.join(PACKAGE_ROOT, *args)).read()
+
+try:
+    exec(read('run_calculator', 'version.py'))
+except Exception as err:
+    print("ERROR: %s" % err)
+    __version__ = None
 
 
 #_____________________________________________________________________________
@@ -36,7 +38,7 @@ for arg in ("test", "check", "register", "sdist", "--long-description"):
 
 setup(
     name='run_calculator',
-    version=version,
+    version=__version__,
     description='convert distance/time/pace for runners',
     long_description=long_description,
     author='Jens Diemer',
@@ -50,8 +52,12 @@ setup(
             'django'
         ]
     ),
-    classifiers=[
-        'Development Status :: 1 - Planning',
+    classifiers=[# https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        # "Development Status :: 1 - Planning",
+        "Development Status :: 2 - Pre-Alpha",
+        # "Development Status :: 3 - Alpha",
+        # "Development Status :: 4 - Beta",
+        # "Development Status :: 5 - Production/Stable",
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
     ],
     install_requires=[
@@ -65,36 +71,36 @@ setup(
         # Desktop/laptop deployments
         'macos': {
             'app_requires': [
-                'toga-cocoa==0.3.0.dev7',
+                'toga-cocoa',
             ]
         },
         'linux': {
             'app_requires': [
-                'toga-gtk==0.3.0.dev7',
+                'toga-gtk',
             ]
         },
         'windows': {
             'app_requires': [
-                'toga-winforms==0.3.0.dev7',
+                'toga-winforms',
             ]
         },
 
         # Mobile deployments
         'ios': {
             'app_requires': [
-                'toga-ios==0.3.0.dev7',
+                'toga-ios',
             ]
         },
         'android': {
             'app_requires': [
-                'toga-android==0.3.0.dev7',
+                'toga-android',
             ]
         },
 
         # Web deployments
         'django': {
             'app_requires': [
-                'toga-django==0.3.0.dev7',
+                'toga-django',
             ]
         },
     }
