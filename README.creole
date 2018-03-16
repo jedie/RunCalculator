@@ -30,3 +30,10 @@ There exist also a Python/Kivy implementation in [[https://github.com/jedie/RunC
 # run the calculator:
 (RunCalculator-Env) ~/RunCalculator-Env$ python -m run_calculator
 }}}
+
+
+== Screenshots
+
+2018-03-16 v0.0.1 with GTK:
+
+{{https://raw.githubusercontent.com/jedie/jedie.github.io/master/screenshots/RunCalculator/2018-03-16_RunCalculator_v001.png|v0.0.1}}
