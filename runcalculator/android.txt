@@ -1,3 +1,0 @@
-title=Run Calculator
-author=Jens Diemer
-orientation=portrait

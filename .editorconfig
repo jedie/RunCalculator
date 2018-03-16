@@ -24,10 +24,9 @@ insert_final_newline = false
 atomic = true
 line_length = 120
 
-known_external=pytest
-known_kivy=kivy
+known_external=pytest,toga
 
-known_first_party=runcalculator
+known_first_party=run_calculator
 
 default_section=THIRDPARTY
-sections=FUTURE,STDLIB,EXTERNAL,KIVY,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
+sections=FUTURE,STDLIB,EXTERNAL,THIRDPARTY,FIRSTPARTY,LOCALFOLDER

@@ -1,28 +1,28 @@
-dist: trusty
-sudo: required
-
-language: generic
-
-services:
-  - docker
-
-script:
-    - ./built_apk.sh
-
-# https://docs.travis-ci.com/user/deployment/releases/
-
-before_deploy:
-  # Set up git user name and tag this commit
-  - git config --local user.name "jedie"
-  - git config --local user.email "travis-ci@jensdiemer.de"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
-
-deploy:
-  provider: releases
-  api_key:
-    secure: ${GH_TOKEN}
-  file:
-    - "runcalculator/bin/RunCalculator-0.1-debug.apk"
-    - "runcalculator/bin/RunCalculator-0.1-release-unsigned.apk"
-  skip_cleanup: true
-  overwrite: true
+#dist: trusty
+#sudo: required
+#
+#language: generic
+#
+#services:
+#  - docker
+#
+#script:
+#    - ./built_apk.sh
+#
+## https://docs.travis-ci.com/user/deployment/releases/
+#
+#before_deploy:
+#  # Set up git user name and tag this commit
+#  - git config --local user.name "jedie"
+#  - git config --local user.email "travis-ci@jensdiemer.de"
+#  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+#
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: ${GH_TOKEN}
+#  file:
+#    - "runcalculator/bin/RunCalculator-0.1-debug.apk"
+#    - "runcalculator/bin/RunCalculator-0.1-release-unsigned.apk"
+#  skip_cleanup: true
+#  overwrite: true
