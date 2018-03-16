@@ -13,6 +13,7 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
 
+from run_calculator.version import __version__
 from run_calculator.utils import calc_pace, human_distance, human_duration
 from run_calculator.widgets.time_input import TimeInput
 
@@ -36,8 +37,8 @@ BASE_DISTANCES = (
 
 class RunCalculator(toga.App):
     def startup(self):
-        # Create the main window
-        self.main_window = toga.MainWindow(self.name)
+        title = "%s v%s by Jens Diemer (GPLv3+)" % (self.name, __version__)
+        self.main_window = toga.MainWindow(self.name, title=title)
 
         main_box = toga.Box(style=Pack(direction=COLUMN, padding_top=10))
 
