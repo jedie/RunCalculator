@@ -16,7 +16,7 @@ There exist also a Python/Kivy implementation in [[https://github.com/jedie/RunC
 
 {{{
 # Download bootstarp script:
-~$ wget https://github.com/jedie/RunCalculator/raw/pybee/boot_dev_venv.sh
+~$ wget https://github.com/jedie/RunCalculator/raw/pybee/boot_runcalculator_venv.sh
 
 # create venv:
 ~$ bash boot_dev_venv.sh
