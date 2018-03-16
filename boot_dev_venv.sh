@@ -31,7 +31,7 @@ DESTINATION=$(pwd)/RunCalculator-Env
     pip install -e toga/src/dummy
     pip install -e toga/src/gtk
 
-    pip3 install -e git+https://github.com/jedie/RunCalculator.git@pybee#egg=RunCalculator
+    pip3 install -e git+https://github.com/jedie/RunCalculator.git@pybee#egg=run_calculator
 
     pip freeze
 )
