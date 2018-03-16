@@ -106,10 +106,16 @@ class RunCalculator(toga.App):
         self.main_window.show()
 
     def button_handler(self, widget):
-        pace = calc_pace(
-            distance=self.distance_input.value,
-            seconds=self.time_input.value,
-        )
+        try:
+            distance=self.distance_input.value
+            seconds=self.time_input.value
+        except AttributeError:
+            # FIXME: fired from:
+            # run_calculator.widgets.time_input.TimeInput#on_change_handler
+            log.exception("FIXME! handler is fired in init phase:")
+            return
+
+        pace = calc_pace(distance, seconds)
 
         distances = set(BASE_DISTANCES)
         distances.add(self.distance_input.value)

@@ -51,9 +51,11 @@ class TimeInput(toga.Box):
 
         self.add(time_box)
 
+        # Set initial value to hh:mm:ss time input widgets
         self.value = initial
 
     def on_change_handler(self, widget):
+        # FIXME: This handler fired in init phase, becasue of setting initial value
         seconds = self.time_input_ss.value
         seconds += self.time_input_mm.value * 60
         seconds += self.time_input_hh.value * 60 * 60
@@ -89,6 +91,3 @@ class TimeInput(toga.Box):
         seconds -= minutes * 60
 
         self.time_input_ss.value = seconds
-
-
-
