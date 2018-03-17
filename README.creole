@@ -19,7 +19,7 @@ There exist also a Python/Kivy implementation in [[https://github.com/jedie/RunC
 ~$ wget https://github.com/jedie/RunCalculator/raw/pybee/boot_runcalculator_venv.sh
 
 # create venv:
-~$ bash boot_dev_venv.sh
+~$ bash boot_runcalculator_venv.sh
 
 # go into venv:
 ~$ cd RunCalculator-Env/
