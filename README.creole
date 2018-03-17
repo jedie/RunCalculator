@@ -32,6 +32,24 @@ There exist also a Python/Kivy implementation in [[https://github.com/jedie/RunC
 }}}
 
 
+run it as django app:
+
+{{{
+(RunCalculator-Env) ~/RunCalculator-Env$ cd /src/run-calculator
+(RunCalculator-Env) ~/RunCalculator-Env/src/run-calculator$ python setup.py django -s
+}}}
+
+This will use [[https://github.com/pybee/Python-Django-template|pybee/Python-Django-template]] via [[https://github.com/pybee/briefcase|pybee/briefcase]]
+
+
+=== update venv
+
+{{{
+(RunCalculator-Env) ~/RunCalculator-Env$ ./src/run-calculator/update_venv.sh
+
+}}}
+
+
 == Screenshots
 
 2018-03-16 v0.0.1 with GTK:
